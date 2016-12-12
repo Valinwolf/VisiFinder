@@ -105,7 +105,7 @@ namespace EyeOpen.Imaging
             }
 
             equals = Destination.File.FullName.Equals(other.Destination.File.FullName, StringComparison.InvariantCultureIgnoreCase);
-            
+
             if (!equals)
             {
                 return false;

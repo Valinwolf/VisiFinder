@@ -37,7 +37,7 @@ namespace EyeOpen.Imaging
         {
             var width = bitmap.Width - 1;
             var height = bitmap.Width - 1;
-            
+
             var horizontalProjection = new double[width];
             var verticalProjection = new double[height];
 
@@ -61,8 +61,8 @@ namespace EyeOpen.Imaging
                         verticalProjection[y] += luminosity;
 
                         imagePointer1 += 4;
-                    } 
-                    
+                    }
+
                     imagePointer1 += bitmapData1.Stride - (bitmapData1.Width * 4);
                 }
             }
@@ -70,10 +70,10 @@ namespace EyeOpen.Imaging
             MaximizeScale(ref horizontalProjection, height);
             MaximizeScale(ref verticalProjection, width);
 
-            var projections = 
+            var projections =
                 new[]
                     {
-                        horizontalProjection, 
+                        horizontalProjection,
                         verticalProjection
                     };
 
@@ -91,7 +91,7 @@ namespace EyeOpen.Imaging
             var minValue = double.MaxValue;
             var maxValue = double.MinValue;
 
-            for (var i = 0; i < projection.Length; i++) 
+            for (var i = 0; i < projection.Length; i++)
             {
                 if (projection[i] > 0)
                 {
@@ -102,7 +102,7 @@ namespace EyeOpen.Imaging
                 {
                     minValue = projection[i];
                 }
-                
+
                 if (projection[i] > maxValue)
                 {
                     maxValue = projection[i];

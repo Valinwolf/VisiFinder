@@ -13,7 +13,7 @@
     internal partial class MainForm : Form
     {
         #region "GUI delegates body"
-        private readonly UpdateDataGridViewDelegate updateDataGridViewDelegate = delegate(BindingList<SimilarityImages> images, DataGridView dataGridView, IList<Button> buttons, TextBox textBox)
+        private readonly UpdateDataGridViewDelegate updateDataGridViewDelegate = delegate (BindingList<SimilarityImages> images, DataGridView dataGridView, IList<Button> buttons, TextBox textBox)
         {
             images.RaiseListChangedEvents = true;
             dataGridView.DataSource = images;
@@ -32,12 +32,12 @@
             textBox.Enabled = buttons[0].Enabled;
         };
 
-        private readonly SetMaximumDelegate setMaximumDelegate = delegate(ProgressBar progressBar, int value)
+        private readonly SetMaximumDelegate setMaximumDelegate = delegate (ProgressBar progressBar, int value)
         {
             progressBar.Maximum = value;
         };
 
-        private readonly UpdateOperationStatusDelegate updateOperationStatusDelegate = delegate(string format, System.Windows.Forms.Label label, ProgressBar progressBar, int value, DateTime startTime)
+        private readonly UpdateOperationStatusDelegate updateOperationStatusDelegate = delegate (string format, System.Windows.Forms.Label label, ProgressBar progressBar, int value, DateTime startTime)
         {
             progressBar.Value = value;
             var percentage = Math.Round(((double)progressBar.Value / (double)progressBar.Maximum), 3);
@@ -53,7 +53,7 @@
             label.Text = string.Format(format, progressBar.Value, progressBar.Maximum, percentage.ToString("P"), elapsed.ToString(), estimated.ToString());
         };
 
-        private readonly ShowGridDelegate showGridDelegate = delegate(DataGridView dataGridView)
+        private readonly ShowGridDelegate showGridDelegate = delegate (DataGridView dataGridView)
         {
             dataGridView.ResumeLayout();
             dataGridView.Enabled = true;
@@ -106,10 +106,10 @@
             var folder = folderTextBox.Text;
             IEnumerable<FileInfo> fl = FileList.GetFiles(folder, "*.jpg");
             var files = fl.AsQueryable().ToArray();
-                   exit = false;
-                findButton.Enabled = false;
-                cancelButton.Enabled = !findButton.Enabled;
-                folderTextBox.Enabled = findButton.Enabled;
+            exit = false;
+            findButton.Enabled = false;
+            cancelButton.Enabled = !findButton.Enabled;
+            folderTextBox.Enabled = findButton.Enabled;
 
             var processImagesDelegate = new ProcessImagesDelegate(ProcessImages);
             processImagesDelegate.BeginInvoke(files, (int)MinMatch.Value, null, null);
@@ -165,7 +165,7 @@
                     var destination = comparableImages[j];
                     var similarity = source.CalculateSimilarity(destination);
                     var sim = new SimilarityImages(source, destination, similarity);
-                    
+
                     similarityImagesSorted.Add(sim);
                     index++;
                     Invoke(updateOperationStatusDelegate, new object[] { "Comparing - Stage 1", workingLabel, workingProgressBar, index, operationStartTime });
@@ -185,10 +185,10 @@
             similarityImagesSorted.Reverse();
             similarityImages = new BindingList<SimilarityImages>(similarityImagesSorted);
 
-            var buttons = 
+            var buttons =
                 new List<Button>
                     {
-                        findButton, 
+                        findButton,
                         cancelButton
                     };
             BeginInvoke(updateDataGridViewDelegate, new object[] { similarityImages, imagesDataGridView, buttons, folderTextBox });
@@ -285,11 +285,11 @@
             try
             {
                 var toDelete = new List<SimilarityImages>();
-                
+
                 for (var index = 0; index < similarityImages.Count; index++)
                 {
                     var item = similarityImages[index];
-                    
+
                     if (item.Source.File.FullName.Equals(fileInfo.FullName, StringComparison.InvariantCultureIgnoreCase) || item.Destination.File.FullName.Equals(fileInfo.FullName, StringComparison.InvariantCultureIgnoreCase))
                     {
                         toDelete.Add(item);
@@ -297,7 +297,7 @@
                 }
 
                 similarityImages.RaiseListChangedEvents = false;
-                
+
                 for (var index = 0; index < toDelete.Count; index++)
                 {
                     var item = toDelete[index];
@@ -348,10 +348,10 @@
 
         private void imagesDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            if(similarityImages.Count == 1)
+            if (similarityImages.Count == 1)
                 workingLabel.Text = "Scan Complete: 1 Duplicate";
-            else if(similarityImages.Count > 1)
-                workingLabel.Text = "Scan Complete: "+similarityImages.Count+" Duplicates";
+            else if (similarityImages.Count > 1)
+                workingLabel.Text = "Scan Complete: " + similarityImages.Count + " Duplicates";
             else
                 workingLabel.Text = "Scan Complete: No duplicates found.";
         }

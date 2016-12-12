@@ -25,18 +25,18 @@ namespace EyeOpen.Imaging
 
         public double[] HorizontalProjection
         {
-            get 
-            { 
-                return horizontalProjection; 
-            }            
+            get
+            {
+                return horizontalProjection;
+            }
         }
 
         public double[] VerticalProjection
         {
-            get 
-            { 
-                return verticalProjection; 
-            }            
+            get
+            {
+                return verticalProjection;
+            }
         }
 
         /// <summary>
@@ -44,11 +44,11 @@ namespace EyeOpen.Imaging
         /// </summary>
         /// <param name="compare">The RGB projection to compare with.</param>
         /// <returns>Return the max similarity value betweem horizontal and vertical RGB projections.</returns>
-        public double CalculateSimilarity(RgbProjections compare) 
+        public double CalculateSimilarity(RgbProjections compare)
         {
             var horizontalSimilarity = CalculateProjectionSimilarity(horizontalProjection, compare.horizontalProjection);
             var verticalSimilarity = CalculateProjectionSimilarity(verticalProjection, compare.verticalProjection);
-            return Math.Max(horizontalSimilarity, verticalSimilarity);            
+            return Math.Max(horizontalSimilarity, verticalSimilarity);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace EyeOpen.Imaging
             var frequencies = new Dictionary<double, int>();
 
             ////Calculate frequencies
-            for (var i = 0; i < source.Length; i++) 
+            for (var i = 0; i < source.Length; i++)
             {
                 var difference = source[i] - compare[i];
                 difference = Math.Round(difference, 2);
@@ -87,7 +87,7 @@ namespace EyeOpen.Imaging
             ////Calculate "weighted mean"
             ////http://en.wikipedia.org/wiki/Weighted_mean
             deviation /= source.Length;
-            
+
             ////Maximize scale
             deviation = (0.5 - deviation) * 2;
 

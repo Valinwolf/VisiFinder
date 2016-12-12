@@ -34,18 +34,18 @@ namespace EyeOpen.Imaging
 
         public FileInfo File
         {
-            get 
-            { 
-                return file; 
-            }            
+            get
+            {
+                return file;
+            }
         }
 
         public RgbProjections Projections
         {
-            get 
-            { 
-                return projections; 
-            }            
+            get
+            {
+                return projections;
+            }
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace EyeOpen.Imaging
         /// </summary>
         /// <param name="compare">The image to compare with.</param>
         /// <returns>Return a value from 0 to 1 that is the similarity.</returns>
-        public double CalculateSimilarity(ComparableImage compare) 
+        public double CalculateSimilarity(ComparableImage compare)
         {
             return projections.CalculateSimilarity(compare.projections);
         }
