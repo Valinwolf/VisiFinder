@@ -4,7 +4,7 @@ VisiFinder
 
 **Credits**
 
- 1. The [initial code](https://similarimagesfinder.codeplex.com/)
+ 1. [Core Code](https://similarimagesfinder.codeplex.com/)
      - [Matteo Migliore](http://www.codeplex.com/site/users/view/teoarch)
  2.  [File Search Code](src/VisiFinder/FileList.cs)
 	 - [Jason Cervantes](https://github.com/zenforic)
