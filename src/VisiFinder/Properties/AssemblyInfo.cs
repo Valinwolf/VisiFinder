@@ -2,15 +2,15 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("EyeOpen.Imaging.SimilarSearch")]
+[assembly: AssemblyTitle("VisiFinder")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Eye Open")]
-[assembly: AssemblyProduct("EyeOpen.Imaging.SimilarSearch")]
-[assembly: AssemblyCopyright("Copyright © Eye Open 2008")]
+[assembly: AssemblyCompany("Octal Tech")]
+[assembly: AssemblyProduct("VisiFinder")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
-[assembly: Guid("80b1f979-2635-46b0-aca0-010da3e1f4fc")]
+[assembly: Guid("2d18b4e9-6c62-47d6-ba67-489dfaad1b55")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
