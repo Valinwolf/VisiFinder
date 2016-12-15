@@ -6,7 +6,7 @@ VisiFinder
 
  1. [Image Processing Library](https://similarimagesfinder.codeplex.com/)
      - [Matteo Migliore](http://www.codeplex.com/site/users/view/teoarch)
- 2.  [File Search Code](src/VisiFinder/FileList.cs)
+ 2.  [File Search Code](VisiFinder/FileList.cs)
 	 - [Jason Cervantes](https://github.com/zenforic)
 
 **License**
